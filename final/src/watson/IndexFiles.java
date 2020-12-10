@@ -40,7 +40,7 @@ import org.apache.lucene.store.FSDirectory;
 
 public class IndexFiles {
 	// position of Index Directory
-	private static final String INDEX_DIR = "src/index/";
+	private static final String INDEX_DIR = "index/";
 	// MRR score
 	static float score = 0;
 	static int temp = 0;
@@ -79,7 +79,7 @@ public class IndexFiles {
 		
 		// try to open directory
 		try {
-			index = FSDirectory.open(Paths.get("src/index"));
+			index = FSDirectory.open(Paths.get(INDEX_DIR));
 			IndexWriterConfig config = new IndexWriterConfig(standardAnalyzer);
 		    writer = new IndexWriter(index, config);
 		} catch (IOException e1) {
@@ -87,7 +87,7 @@ public class IndexFiles {
 			e1.printStackTrace();
 		}
 
-		File directory = new File("src/data");
+		File directory = new File("data");
 		File[] directoryListing = directory.listFiles();
 
 		if (directoryListing != null) {
@@ -244,7 +244,7 @@ public class IndexFiles {
 		BufferedReader reader;
 		int count = 0;
 		try {
-			reader = new BufferedReader(new FileReader(new File("src/questions.txt")));
+			reader = new BufferedReader(new FileReader(new File("questions.txt")));
 			String line = reader.readLine();
 			while(line != null) {
 				count++;
